@@ -8,7 +8,7 @@ form.addEventListener("submit", (event) => {
   card_table.innerHTML = "";
   event.preventDefault();
   user_location = document.getElementById("location").value;
-  let url_geo = `https://geocoding-api.open-meteo.com/v1/search?name=${user_location}&count=1&language=en&format=json`;
+  let url_geo = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(user_location)}&count=1&language=ja&format=json`;
 
   //位置情報から天気の情報を取得
   fetch(url_geo)
