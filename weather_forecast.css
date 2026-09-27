@@ -1,16 +1,35 @@
-/* ========================================
-   Base
-======================================== */
+/* =========================================
+   Weather Forecast
+   Responsive / Modern / Dark UI
+========================================= */
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+}
+
+html {
+  font-size: 16px;
 }
 
 body {
+  margin: 0;
   min-height: 100vh;
-  padding: 70px 40px;
+  padding: 48px 24px 64px;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(60, 90, 120, 0.18),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      #101419 0%,
+      #0b0e12 55%,
+      #07090c 100%
+    );
+
+  color: #f4f7fa;
 
   font-family:
     "Segoe UI",
@@ -18,143 +37,140 @@ body {
     Arial,
     sans-serif;
 
-  color: #e8edf2;
-
-  background:
-    radial-gradient(
-      circle at 15% 20%,
-      rgba(6, 130, 255, 0.342),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 85% 75%,
-      rgba(255, 157, 10, 0.342),
-      transparent 28%
-    ),
-    #101820;
+  overflow-x: hidden;
 }
 
 
-/* ========================================
-   Title
-======================================== */
+/* =========================================
+   タイトル
+========================================= */
 
 h1 {
-  margin-bottom: 36px;
+  margin: 0 auto 36px;
 
   text-align: center;
 
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
 
-  color: #f2f5f7;
+  color: #f7f9fb;
+
+  line-height: 1.2;
 }
 
 
-/* ========================================
-   Search Form
-======================================== */
+/* =========================================
+   検索フォーム
+========================================= */
 
 #location-form {
   width: min(620px, 100%);
-  margin: 0 auto 60px;
+  margin: 0 auto 34px;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 12px;
 
-  padding: 10px;
+  padding: 12px;
 
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.055);
 
   box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.2);
+    0 15px 40px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
-
-
-/* label */
 
 #location-form label {
-  padding-left: 12px;
+  padding-left: 8px;
+
+  color: #d7dde4;
+
+  font-size: 0.95rem;
+  font-weight: 600;
 
   white-space: nowrap;
-
-  font-size: 0.9rem;
-  color: #aebbc7;
 }
 
-
-/* input */
-
 #location {
-  flex: 1;
-
+  width: 100%;
   min-width: 0;
 
-  padding: 13px 16px;
+  padding: 13px 15px;
 
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 11px;
   outline: none;
-  border-radius: 10px;
 
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.24);
 
   color: #ffffff;
 
   font-size: 1rem;
 
   transition:
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 #location::placeholder {
-  color: #778591;
+  color: #737c87;
 }
 
 #location:focus {
-  background: rgba(255, 255, 255, 0.12);
+  border-color: #6688a8;
+
+  background: rgba(0, 0, 0, 0.34);
 
   box-shadow:
-    0 0 0 2px rgba(122, 155, 184, 0.35);
+    0 0 0 3px rgba(92, 130, 165, 0.13);
 }
 
 
-/* Search button */
+/* =========================================
+   検索ボタン
+========================================= */
 
 #form-button {
-  padding: 13px 24px;
+  min-width: 82px;
 
-  border: none;
-  border-radius: 10px;
+  padding: 13px 20px;
 
-  background: #c8b292;
-  color: #17212a;
+  border: 1px solid rgba(130, 165, 195, 0.35);
+  border-radius: 11px;
+
+  background: #25394b;
+
+  color: #f7f9fb;
 
   font-size: 0.95rem;
   font-weight: 600;
 
   cursor: pointer;
 
+  white-space: nowrap;
+
   transition:
-    transform 0.2s ease,
+    transform 0.15s ease,
     background 0.2s ease,
     box-shadow 0.2s ease;
 }
 
 #form-button:hover {
-  background: #d7c3a5;
+  background: #304a61;
 
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
   box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.2);
+    0 7px 18px rgba(0, 0, 0, 0.25);
 }
 
 #form-button:active {
@@ -162,214 +178,795 @@ h1 {
 }
 
 
-/* ========================================
-   Weather Cards
-======================================== */
+/* =========================================
+   サマリー / 詳細 ボタン
+========================================= */
 
-.card-table {
-  width: min(1250px, 100%);
+.button-sub {
+  position: relative;
+  left: 50%;
 
-  margin: 0 auto;
+  margin: 0 4px 28px;
 
-  border-collapse: separate;
-  border-spacing: 12px;
+  padding: 10px 22px;
 
-  table-layout: fixed;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.055);
+
+  color: #929ca7;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transform: translateX(-100%);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.button-sub + .button-sub {
+  transform: translateX(-100%);
+}
+
+.button-sub:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+
+  color: #ffffff;
+}
+
+.button-sub.activated,
+.button-sub:disabled {
+  border-color: rgba(104, 148, 184, 0.5);
+
+  background: #25394b;
+
+  color: #ffffff;
+
+  opacity: 1;
+
+  cursor: default;
 }
 
 
-/* 1日分のカード */
+/* =========================================
+   TABLE 共通
+========================================= */
 
-.card-table td {
-  height: 260px;
+.card-table {
+  border-collapse: separate;
+  border-spacing: 0;
 
-  padding: 28px 15px;
+  margin: 0 auto;
+
+  color: #ffffff;
+}
+
+
+/* =========================================
+   サマリー表示
+   7日分のカード
+========================================= */
+
+.card-table tr:first-child:last-child {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, minmax(120px, 1fr));
+
+  gap: 12px;
+
+  width: min(1180px, calc(100vw - 48px));
+}
+
+
+/* =========================================
+   サマリーカード
+========================================= */
+
+.card-table tr:first-child:last-child > td {
+  min-width: 0;
+
+  padding: 24px 12px;
 
   text-align: center;
   vertical-align: middle;
 
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+
   background:
     linear-gradient(
-      145deg,
-      rgba(42, 58, 72, 0.95),
-      rgba(26, 38, 49, 0.95)
+      155deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.025)
     );
 
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 18px;
-
   box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.25);
+    0 12px 30px rgba(0, 0, 0, 0.2);
+
+  overflow: hidden;
 
   transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.card-table tr:first-child:last-child > td:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(130, 160, 185, 0.25);
+
+  background:
+    linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.095),
+      rgba(255, 255, 255, 0.035)
+    );
 }
 
 
-/* カード hover */
-
-.card-table td:hover {
-  transform: translateY(-8px);
-
-  border-color: rgba(200, 178, 146, 0.45);
-
-  box-shadow:
-    0 22px 45px rgba(0, 0, 0, 0.35);
-}
-
-
-/* ========================================
-   Date
-======================================== */
+/* =========================================
+   日付
+========================================= */
 
 .daily {
-  margin-bottom: 28px;
+  margin: 0 0 16px;
 
-  font-size: 1rem;
-  font-weight: 600;
+  color: #ffffff;
 
-  letter-spacing: 0.08em;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 700;
 
-  color: #aab8c4;
+  line-height: 1.2;
+
+  white-space: nowrap;
 }
 
 
-/* ========================================
-   Weather Icon
-======================================== */
+/* =========================================
+   天気アイコン
+========================================= */
 
 .weather {
-  margin-bottom: 28px;
+  margin: 10px 0 18px;
 
-  font-size: 3.8rem;
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+
+  line-height: 1;
+}
+
+
+/* =========================================
+   気温
+========================================= */
+
+.temp {
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: clamp(0.78rem, 1.15vw, 1rem);
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  white-space: nowrap;
+}
+
+.max-temp {
+  color: #e59b8f;
+  font-weight: 700;
+}
+
+.min-temp {
+  color: #80add2;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   詳細表示
+========================================= */
+
+/*
+   詳細は24時間分存在するため、
+   無理に画面内へ縮小しない。
+
+   カードサイズを一定にして
+   table全体を横スクロールさせる。
+*/
+
+.card-table:has(th) {
+  display: block;
+
+  width: min(100%, 1500px);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 4px 4px 18px;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    #43576a
+    rgba(255, 255, 255, 0.04);
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.card-table:has(th)::-webkit-scrollbar {
+  height: 8px;
+}
+
+.card-table:has(th)::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+
+  border-radius: 999px;
+}
+
+.card-table:has(th)::-webkit-scrollbar-thumb {
+  background: #43576a;
+
+  border-radius: 999px;
+}
+
+
+/* =========================================
+   詳細：1日ごとの行
+========================================= */
+
+.card-table:has(th) tr {
+  display: flex;
+
+  width: max-content;
+
+  margin-bottom: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   詳細：日付
+========================================= */
+
+.card-table:has(th) th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+
+  width: 86px;
+  min-width: 86px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 8px;
+
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: #151c23;
+
+  color: #ffffff;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   詳細：天気
+========================================= */
+
+.card-table:has(th) th:nth-child(2) {
+  position: sticky;
+  left: 86px;
+  z-index: 3;
+
+  width: 64px;
+  min-width: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 6px;
+
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: #151c23;
+
+  font-size: 1.7rem;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   詳細：時間別気温カード
+========================================= */
+
+.card-table:has(th) td {
+  width: 82px;
+  min-width: 82px;
+  height: 74px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 6px;
+
+  border: none;
+
+  text-align: center;
+
+  background: transparent;
+
+  flex-shrink: 0;
+}
+
+
+/* 時刻 */
+
+.card-table:has(th) td p:first-child {
+  margin: 0 0 6px;
+
+  color: #7f8994;
+
+  font-size: 0.72rem;
+  font-weight: 500;
 
   line-height: 1;
 
-  filter:
-    drop-shadow(0 7px 8px rgba(0, 0, 0, 0.2));
+  white-space: nowrap;
 }
 
 
-/* ========================================
-   Temperature
-======================================== */
+/* 気温 */
 
-.temp {
-  font-size: 1rem;
-  font-weight: 500;
+.card-table:has(th) td p:last-child {
+  margin: 0;
 
-  color: #f1e8dc;
+  color: #e9edf1;
 
-  letter-spacing: 0.03em;
+  font-size: 0.92rem;
+  font-weight: 600;
+
+  line-height: 1;
+
+  white-space: nowrap;
 }
 
 
-/* ========================================
-   Responsive
-======================================== */
+/* 最大・最低気温 */
 
-@media (max-width: 900px) {
+.card-table:has(th) td p.max-temp {
+  color: #e59b8f;
+}
+
+.card-table:has(th) td p.min-temp {
+  color: #80add2;
+}
+
+
+/* =========================================
+   タブレット
+   サマリーは折り返さず横スクロール
+========================================= */
+
+@media (max-width: 1000px) {
 
   body {
-    padding: 50px 20px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   /*
-    tableの横幅を確保して
-    横スクロールできるようにする
+     サマリー
+     7枚を1行のまま維持
   */
-
-  .card-table {
-    width: 100%;
+  .card-table:not(:has(th)) {
     display: block;
+
+    width: 100%;
+    max-width: 100%;
 
     overflow-x: auto;
+    overflow-y: hidden;
 
-    white-space: nowrap;
+    padding-bottom: 14px;
 
-    padding-bottom: 15px;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+      #43576a
+      rgba(255, 255, 255, 0.04);
   }
 
-  .card-table tbody,
-  .card-table tr {
+  .card-table:not(:has(th))::-webkit-scrollbar {
+    height: 7px;
+  }
+
+  .card-table:not(:has(th))::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 999px;
+  }
+
+  .card-table:not(:has(th))::-webkit-scrollbar-thumb {
+    background: #43576a;
+    border-radius: 999px;
+  }
+
+  .card-table tr:first-child:last-child {
     display: flex;
-    gap: 14px;
+
+    width: max-content;
+
+    gap: 12px;
   }
 
-  .card-table td {
-    display: block;
+  .card-table tr:first-child:last-child > td {
+    width: 145px;
+    min-width: 145px;
 
-    min-width: 155px;
-    height: 240px;
-
-    padding: 25px 15px;
+    flex-shrink: 0;
   }
 }
 
 
-/* ========================================
-   Smartphone
-======================================== */
+/* =========================================
+   スマートフォン
+========================================= */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
   body {
-    padding: 35px 16px;
+    padding:
+      30px
+      14px
+      50px;
   }
+
+
+  /* =====================================
+     タイトル
+  ===================================== */
 
   h1 {
-    margin-bottom: 28px;
+    margin-bottom: 26px;
 
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 9vw, 2.5rem);
   }
 
 
-  /* フォームを縦並び */
+  /* =====================================
+     検索フォーム
+
+     label
+     ↓
+     input
+     ↓
+     button
+
+     の縦配置
+  ===================================== */
 
   #location-form {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
 
-    padding: 14px;
+    width: 100%;
 
-    margin-bottom: 40px;
+    gap: 9px;
+
+    padding: 12px;
+
+    border-radius: 15px;
   }
 
   #location-form label {
-    padding-left: 2px;
+    width: 100%;
+
+    padding: 0 2px 2px;
+
+    font-size: 0.85rem;
   }
+
+
+  /* =====================================
+     検索入力欄
+  ===================================== */
 
   #location {
+    display: block;
+
     width: 100%;
+
+    min-width: 0;
+
+    padding: 13px 15px;
+
+    font-size: 16px;
   }
+
+
+  /* =====================================
+     検索ボタン
+
+     入力欄と同じ横幅
+  ===================================== */
 
   #form-button {
+    display: block;
+
     width: 100%;
+    min-width: 0;
+
+    padding: 13px 15px;
+
+    font-size: 0.95rem;
+
+    border-radius: 11px;
   }
 
 
-  /* 天気カード */
+  /* =====================================
+     サマリー / 詳細ボタン
+  ===================================== */
 
-  .card-table td {
-    min-width: 145px;
-    height: 220px;
+  .button-sub {
+    margin-bottom: 24px;
 
-    padding: 22px 12px;
+    padding: 9px 17px;
+
+    font-size: 0.85rem;
+  }
+
+
+  /* =====================================
+     サマリー
+
+     7日分を横一列にする
+  ===================================== */
+
+  .card-table:not(:has(th)) {
+    display: block;
+
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding:
+      3px
+      2px
+      15px;
+
+    -webkit-overflow-scrolling: touch;
+
+    scroll-snap-type: x proximity;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+      #43576a
+      rgba(255, 255, 255, 0.04);
+  }
+
+
+  /* Chrome / Edge / Safari */
+
+  .card-table:not(:has(th))::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .card-table:not(:has(th))::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+
+    border-radius: 999px;
+  }
+
+  .card-table:not(:has(th))::-webkit-scrollbar-thumb {
+    background: #43576a;
+
+    border-radius: 999px;
+  }
+
+
+  /* =====================================
+     サマリーの7枚を1行に固定
+  ===================================== */
+
+  .card-table tr:first-child:last-child {
+    display: flex;
+
+    width: max-content;
+
+    gap: 10px;
+  }
+
+
+  /* =====================================
+     サマリーカード
+
+     flex-shrink: 0 が重要
+     → 画面幅が小さくてもカードを潰さない
+  ===================================== */
+
+  .card-table tr:first-child:last-child > td {
+    width: 140px;
+    min-width: 140px;
+
+    flex: 0 0 140px;
+
+    padding:
+      20px
+      10px;
+
+    border-radius: 14px;
+
+    scroll-snap-align: start;
+  }
+
+
+  /* =====================================
+     日付
+  ===================================== */
+
+  .daily {
+    margin-bottom: 12px;
+
+    font-size: 1rem;
+
+    white-space: nowrap;
+  }
+
+
+  /* =====================================
+     天気アイコン
+  ===================================== */
+
+  .weather {
+    margin:
+      8px
+      0
+      15px;
+
+    font-size: 2.5rem;
+  }
+
+
+  /* =====================================
+     最高 / 最低気温
+  ===================================== */
+
+  .temp {
+    font-size: 0.82rem;
+
+    gap: 3px;
+
+    white-space: nowrap;
+  }
+
+
+  /* =====================================
+     詳細表示
+  ===================================== */
+
+  .card-table:has(th) {
+    width: 100%;
+
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+
+  /* 日付 */
+
+  .card-table:has(th) th:first-child {
+    width: 72px;
+    min-width: 72px;
+
+    font-size: 0.88rem;
+  }
+
+
+  /* 天気 */
+
+  .card-table:has(th) th:nth-child(2) {
+    left: 72px;
+
+    width: 55px;
+    min-width: 55px;
+
+    font-size: 1.5rem;
+  }
+
+
+  /* 時間別気温 */
+
+  .card-table:has(th) td {
+    width: 76px;
+    min-width: 76px;
+    height: 70px;
+
+    padding:
+      7px
+      5px;
+
+    flex-shrink: 0;
+  }
+
+  .card-table:has(th) td p:first-child {
+    font-size: 0.68rem;
+  }
+
+  .card-table:has(th) td p:last-child {
+    font-size: 0.86rem;
+  }
+}
+
+
+/* =========================================
+   非常に小さいスマートフォン
+========================================= */
+
+@media (max-width: 380px) {
+
+  body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /*
+     画面が小さくてもカード自体は
+     小さくしすぎない
+  */
+
+  .card-table tr:first-child:last-child > td {
+    width: 135px;
+    min-width: 135px;
+
+    flex-basis: 135px;
+
+    padding:
+      18px
+      8px;
   }
 
   .daily {
-    margin-bottom: 22px;
+    font-size: 0.95rem;
   }
 
   .weather {
-    margin-bottom: 22px;
-
-    font-size: 3.2rem;
+    font-size: 2.3rem;
   }
 
   .temp {
-    font-size: 0.9rem;
+    font-size: 0.78rem;
   }
 }
